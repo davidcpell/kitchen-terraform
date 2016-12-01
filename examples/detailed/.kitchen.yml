@@ -5,8 +5,6 @@ provisioner:
   name: terraform
   directory: >-
     test/fixtures/<%= `terraform -version`.slice(/v(\d+\.\d+)/, 1) %>
-  variable_files:
-  - test/fixtures/credentials.tfvars
 transport:
   name: ssh
   connection_retries: 76
@@ -14,17 +12,20 @@ verifier:
   name: terraform
   format: doc
   groups:
-    - name: contrived
-      attributes:
-        other_host_address: different_host_address
-      controls:
-        - ami_id
-        - reachable_other_host
-        - running_service
-      hostnames: contrived_hostnames
-      port: 22
-      username: ubuntu
+  - name: contrived
+    attributes:
+      other_host_address: different_host_address
+    controls:
+    - ami_id
+    - reachable_other_host
+    - running_service
+    hostnames: contrived_hostnames
+    port: 22
+    username: ubuntu
+  - name: local
+    controls:
+    - security_group
 platforms:
-  - name: ubuntu
+- name: ubuntu
 suites:
-  - name: example
+- name: example
