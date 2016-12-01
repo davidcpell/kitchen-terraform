@@ -15,7 +15,9 @@
 # limitations under the License.
 
 control 'ami_id' do
-  describe ec2_instance.ami_id do
+  describe 'an AMI ID' do
+    subject { ec2_instance.ami_id }
+
     it { is_expected.to match 'ami-' }
   end
 end
