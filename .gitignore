@@ -5,4 +5,5 @@ coverage/
 examples/detailed/.kitchen.local.yml
 examples/detailed/.kitchen/
 examples/detailed/.terraform/
+inspec.lock
 tmp/
